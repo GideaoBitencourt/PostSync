@@ -1,0 +1,238 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+}
+
+.cadastro-container {
+    display: flex;
+
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* =========================
+   LADO ESQUERDO
+========================= */
+
+.cadastro-banner {
+    width: 50%;
+    height: 100vh;
+
+    background-color: #ed3827;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.banner-text {
+    margin-left: 58px;
+    margin-bottom: 42px;
+
+    color: white;
+}
+
+.banner-text h1 {
+    margin: 0 0 8px;
+
+    font-size: 36px;
+    font-weight: 700;
+
+    letter-spacing: -1px;
+}
+
+.banner-text h1 span {
+    font-weight: 400;
+}
+
+.banner-text p {
+    margin: 0;
+
+    font-size: 18px;
+    line-height: 1.15;
+}
+
+
+/* =========================
+   LADO DIREITO
+========================= */
+
+.cadastro-form {
+    width: 50%;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-content {
+    width: 456px;
+}
+
+
+/* =========================
+   TÍTULO
+========================= */
+
+.form-content h2 {
+    margin: 0;
+
+    font-size: 32px;
+    font-weight: 700;
+
+    color: #111111;
+}
+
+.subtitle {
+    margin: 4px 0 36px;
+
+    color: #777777;
+
+    font-size: 16px;
+}
+
+
+/* =========================
+   CAMPOS
+========================= */
+
+.input-group {
+    margin-bottom: 21px;
+}
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: #111111;
+}
+
+.input-group input {
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 56px;
+
+    padding: 0 16px;
+
+    border: 1px solid #dddddd;
+    border-radius: 6px;
+
+    background-color: #fafafa;
+
+    font-size: 16px;
+
+    color: #333333;
+
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: #999999;
+}
+
+.input-group input:focus {
+    border-color: #ed3827;
+}
+
+
+/* =========================
+   BOTÃO CADASTRAR
+========================= */
+
+.btn-cadastrar {
+    width: 100%;
+    height: 52px;
+
+    margin-top: 5px;
+
+    border: none;
+    border-radius: 6px;
+
+    background-color: #ed3827;
+
+    color: white;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.btn-cadastrar:hover {
+    background-color: #d92f20;
+}
+
+
+/* =========================
+   LINK PARA LOGIN
+========================= */
+
+.login-link {
+    margin-top: 22px;
+
+    text-align: center;
+
+    color: #777777;
+
+    font-size: 15px;
+}
+
+.login-link a {
+    color: #ed3827;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 800px) {
+
+    .cadastro-container {
+        flex-direction: column;
+
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .cadastro-banner {
+        width: 100%;
+        height: 220px;
+    }
+
+    .banner-text {
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
+
+    .cadastro-form {
+        width: 100%;
+        height: auto;
+
+        min-height: calc(100vh - 220px);
+
+        padding: 50px 25px;
+
+        box-sizing: border-box;
+    }
+
+    .form-content {
+        width: 100%;
+        max-width: 456px;
+    }
+}
