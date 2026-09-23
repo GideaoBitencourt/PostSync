@@ -1,0 +1,125 @@
+<div class="cliente">
+
+  <header class="topo">
+    <div>
+      <p class="saudacao">Olá, {{ customerName.split(' ')[0] }}</p>
+      <h1>Sua conta postSync</h1>
+    </div>
+    <div class="pontos-badge">
+      <span class="pontos-valor">{{ pointsBalance | number:'1.0-0':'pt-BR' }}</span>
+      <span class="pontos-label">pontos</span>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button type="button" [class.active]="activeTab === 'precos'" (click)="selectTab('precos')">Preços</button>
+    <button type="button" [class.active]="activeTab === 'abastecimentos'" (click)="selectTab('abastecimentos')">Abastecimentos</button>
+    <button type="button" [class.active]="activeTab === 'beneficios'" (click)="selectTab('beneficios')">Benefícios</button>
+  </nav>
+
+  <!-- PREÇOS -->
+  <section class="tab-content" *ngIf="activeTab === 'precos'">
+    <div class="price-grid">
+      <div class="price-card" *ngFor="let item of prices">
+        <span class="price-fuel">{{ item.fuel }}</span>
+        <span class="price-value">{{ formatCurrency(item.price) }}<small>/L</small></span>
+        <span class="price-trend"
+          [class.trend-up]="item.trend === 'up'"
+          [class.trend-down]="item.trend === 'down'"
+          [class.trend-stable]="item.trend === 'stable'">
+          <ng-container [ngSwitch]="item.trend">
+            <span *ngSwitchCase="'up'">▲ {{ item.changePercent }}%</span>
+            <span *ngSwitchCase="'down'">▼ {{ item.changePercent }}%</span>
+            <span *ngSwitchCase="'stable'">— estável</span>
+          </ng-container>
+        </span>
+        <span class="price-updated">Atualizado {{ formatDateTime(item.updatedAt) }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABASTECIMENTOS -->
+  <section class="tab-content" *ngIf="activeTab === 'abastecimentos'">
+    <div class="resumo-mes">
+      <div>
+        <span class="resumo-num">{{ formatLiters(totalLitrosMes) }}</span>
+        <span class="resumo-label">abastecidos no período</span>
+      </div>
+      <div>
+        <span class="resumo-num">{{ formatCurrency(totalGastoMes) }}</span>
+        <span class="resumo-label">gastos no período</span>
+      </div>
+    </div>
+
+    <ul class="fuelup-list">
+      <li class="fuelup-item" *ngFor="let f of fuelUps">
+        <div class="fuelup-main">
+          <span class="fuelup-fuel">{{ f.fuel }}</span>
+          <span class="fuelup-posto">{{ f.posto }} · {{ formatDate(f.date) }}</span>
+        </div>
+        <div class="fuelup-numbers">
+          <span class="fuelup-total">{{ formatCurrency(f.total) }}</span>
+          <span class="fuelup-liters">{{ formatLiters(f.liters) }}</span>
+        </div>
+        <div class="fuelup-points">+{{ f.pointsEarned }} pts</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- BENEFÍCIOS -->
+  <section class="tab-content" *ngIf="activeTab === 'beneficios'">
+
+    <div class="points-card">
+      <span class="points-label">Seu saldo</span>
+      <span class="points-big">{{ pointsBalance | number:'1.0-0':'pt-BR' }} <small>pontos</small></span>
+      <p class="points-explain">
+        Você ganha <b>{{ pointsPerLiter }} pontos por litro</b> abastecido.
+        A cada 100 pontos, você tem direito a {{ formatCurrency(pointsToReal * 100) }} de desconto no abastecimento.
+      </p>
+    </div>
+
+    <div class="redeem-card">
+      <h3>Aplicar pontos no abastecimento</h3>
+
+      <div class="redeem-slider">
+        <input
+          type="range"
+          [min]="minRedeem"
+          [max]="pointsBalance"
+          step="10"
+          [(ngModel)]="redeemAmount"
+          [disabled]="pointsBalance < minRedeem"
+        />
+        <div class="redeem-values">
+          <span>{{ redeemAmount | number:'1.0-0':'pt-BR' }} pontos</span>
+          <span class="redeem-discount">{{ formatCurrency(discountValue) }} de desconto</span>
+        </div>
+      </div>
+
+      <button type="button" class="btn-primary" [disabled]="!canRedeem" (click)="applyRedeem()">
+        Aplicar no próximo abastecimento
+      </button>
+
+      <p class="redeem-hint" *ngIf="pointsBalance < minRedeem">
+        Você precisa de pelo menos {{ minRedeem }} pontos para resgatar um desconto.
+      </p>
+
+      <p class="confirmation" *ngIf="confirmationMessage">{{ confirmationMessage }}</p>
+    </div>
+
+    <div class="history-card">
+      <h3>Histórico de pontos</h3>
+      <ul class="history-list">
+        <li *ngFor="let ev of pointsHistory">
+          <span class="history-desc">{{ ev.description }}</span>
+          <span class="history-date">{{ formatDate(ev.date) }}</span>
+          <span class="history-points" [class.negative]="ev.type === 'resgate'">
+            {{ ev.type === 'ganho' ? '+' : '-' }}{{ ev.points }} pts
+          </span>
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+</div>

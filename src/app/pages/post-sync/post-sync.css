@@ -21,8 +21,8 @@ body {
 
 nav {
     width: 100%;
-    padding: 22px 0;
-    background: #E53E29;
+    padding: 6px 0;
+    background: #E63726;
     border-bottom: 1px solid var(--border);
 
     position: sticky;
@@ -39,9 +39,14 @@ nav {
 }
 
 .brand {
+    width: 100%;
     font-size: 28px;
     font-weight: 700;
     letter-spacing: -1px;
+}
+
+.brand img {
+    width: 200px;
 }
 
 .brand span {
@@ -89,7 +94,7 @@ nav {
     display: grid;
     grid-template-columns: 1fr 0.9fr;
     align-items: center;
-    gap: 80px;
+    width: 90%;
 }
 
 .hero h1 {
@@ -161,114 +166,6 @@ nav {
     color: var(--amber);
 }
 
-/* DASHBOARD MOCKUP */
-
-.dash {
-    padding: 25px;
-
-    background: linear-gradient(
-        145deg,
-        #151f28,
-        #0f171e
-    );
-
-    border: 1px solid rgba(147, 160, 168, 0.25);
-    border-radius: 10px;
-
-    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
-}   
-
-.dash-head {
-    padding-bottom: 20px;
-    margin-bottom: 25px;
-
-    border-bottom: 1px solid var(--border);
-}
-
-.dash-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    font-size: 14px;
-    color: var(--text);
-}
-
-.dash-dot {
-    width: 8px;
-    height: 8px;
-
-    background: var(--teal);
-
-    border-radius: 50%;
-
-    box-shadow: 0 0 10px rgba(63, 182, 168, 0.7);
-}
-
-/* Tanques */
-
-.tank-row {
-    margin-bottom: 22px;
-}
-
-.tank-label {
-    display: flex;
-    justify-content: space-between;
-
-    margin-bottom: 8px;
-
-    font-size: 14px;
-}
-
-.tank-label span {
-    color: var(--text-muted);
-}
-
-.tank-label b {
-    color: var(--text);
-}
-
-.tank-bar {
-    width: 100%;
-    height: 7px;
-
-    background: #202b34;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-}
-
-.tank-fill {
-    height: 100%;
-
-    border-radius: 20px;
-
-    transition: width 0.5s ease;
-}
-
-/* Informações do dashboard */
-
-.dash-ticker,
-.dash-loyalty {
-    padding: 15px 0;
-
-    border-top: 1px solid var(--border);
-
-    color: var(--text-muted);
-
-    font-size: 13px;
-}
-
-.dash-ticker b {
-    color: var(--amber);
-}
-
-.dash-loyalty b {
-    color: var(--teal);
-}
-
 
 /* Pilares */
 
@@ -299,7 +196,7 @@ nav {
 .pillar h2 {
     margin: 0 0 15px;
 
-    font-size: 42px;
+    font-size: 55px;
     line-height: 1.1;
     letter-spacing: -1px;
 }
@@ -311,7 +208,13 @@ nav {
 
     color: var(--text-muted);
 
-    font-size: 17px;
+    font-size: 25px;
+}
+
+.pillar img {
+    width: 75%;
+    border-radius: 5%;
+    margin-left: 25%;
 }
 
 /* Cores dos títulos */
@@ -329,7 +232,7 @@ nav {
 }
 
 
-/* Lista de recursos */
+/* Lista de recursos 
 
 .feature-list {
     padding: 0;
@@ -358,7 +261,7 @@ nav {
     color: var(--amber);
 
     font-weight: bold;
-}
+}*/
 
 .pillar-monitoramento .feature-list li::before {
     color: var(--teal);

@@ -1,0 +1,402 @@
+:host {
+  display: block;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --brand: #E53E29;
+  --white: #FFFFFF;
+  --ink: #1A1A1A;
+  --ink-muted: #6B6B6B;
+  --border: #E4E1DF;
+  --bg: #F6F5F4;
+  --green: #2E9E5B;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.cliente {
+  background: var(--bg);
+  min-height: 100vh;
+  padding: 28px 20px 60px;
+}
+
+.topo {
+  max-width: 720px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.saudacao {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+}
+
+.topo h1 {
+  margin: 2px 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.pontos-badge {
+  background: var(--brand);
+  color: var(--white);
+  border-radius: 10px;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.1;
+}
+
+.pontos-valor {
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.pontos-label {
+  font-size: 0.72rem;
+  opacity: 0.9;
+}
+
+/* ---------- TABS ---------- */
+.tabs {
+  max-width: 720px;
+  margin: 0 auto 24px;
+  display: flex;
+  gap: 4px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.tabs button.active {
+  background: var(--brand);
+  color: var(--white);
+}
+
+.tab-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* ---------- PREÇOS ---------- */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.price-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-fuel {
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.price-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.price-value small {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+}
+
+.price-trend {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.trend-up { color: var(--brand); }
+.trend-down { color: var(--green); }
+.trend-stable { color: var(--ink-muted); }
+
+.price-updated {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  margin-top: 4px;
+}
+
+/* ---------- ABASTECIMENTOS ---------- */
+.resumo-mes {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.resumo-mes > div {
+  flex: 1;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resumo-num {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.resumo-label {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.fuelup-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fuelup-item {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 4px 12px;
+}
+
+.fuelup-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.fuelup-fuel {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.fuelup-posto {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.fuelup-numbers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.fuelup-total {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.fuelup-liters {
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
+.fuelup-points {
+  grid-column: 1 / -1;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--green);
+  border-top: 1px dashed var(--border);
+  padding-top: 8px;
+}
+
+/* ---------- BENEFÍCIOS ---------- */
+.points-card {
+  background: var(--brand);
+  color: var(--white);
+  border-radius: 14px;
+  padding: 24px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.points-label {
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.points-big {
+  font-size: 2.1rem;
+  font-weight: 700;
+}
+
+.points-big small {
+  font-size: 1rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+.points-explain {
+  margin: 4px 0 0;
+  font-size: 0.88rem;
+  opacity: 0.95;
+  max-width: 48ch;
+}
+
+.redeem-card, .history-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.redeem-card h3, .history-card h3 {
+  margin: 0 0 16px;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.redeem-slider input[type="range"] {
+  width: 100%;
+  accent-color: var(--brand);
+}
+
+.redeem-values {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  margin: 8px 0 18px;
+}
+
+.redeem-discount {
+  color: var(--brand);
+  font-weight: 700;
+}
+
+.btn-primary {
+  width: 100%;
+  padding: 13px;
+  background: var(--brand);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #C7301E;
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.redeem-hint {
+  margin: 10px 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+}
+
+.confirmation {
+  margin: 12px 0 0;
+  font-size: 0.85rem;
+  color: var(--green);
+  font-weight: 600;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+
+.history-list li:first-child {
+  border-top: none;
+}
+
+.history-desc {
+  color: var(--ink);
+}
+
+.history-date {
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+}
+
+.history-points {
+  font-weight: 700;
+  color: var(--green);
+}
+
+.history-points.negative {
+  color: var(--brand);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 520px) {
+  .price-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resumo-mes {
+    flex-direction: column;
+  }
+
+  .fuelup-item {
+    grid-template-columns: 1fr;
+  }
+
+  .fuelup-numbers {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 10px;
+  }
+}

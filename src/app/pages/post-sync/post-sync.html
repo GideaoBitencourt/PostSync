@@ -1,182 +1,163 @@
 <body>
-<nav>
-  <div class="nav-inner wrap" style="padding-left:0; padding-right:0;">
-    <div class="brand">PostSync</div>
-    <a class="nav-cta" href="login">Login</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1>O posto inteiro, em um único painel.</h1>
-      <p class="lede">O PostSync une gestão financeira, monitoramento de tanques e um programa de fidelidade em uma única plataforma. Para quem opera o posto e para quem abastece nele.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="#cta">Solicitar demonstração</a>
-        <a class="btn-ghost" href="#pilares">Ver como funciona</a>
+  <nav>
+    <div class="nav-inner wrap" style="padding-left:0; padding-right:0;">
+      <div class="brand">
+        <img src="assets/logo-postsync.png" alt="logo">
       </div>
+      <a class="nav-cta" href="login">Login</a>
     </div>
+  </nav>
 
-    <div class="dash" id="dashmock" aria-label="Exemplo de painel do Fluxo">
-      <div class="dash-head">
-        <span class="dash-title"><span class="dash-dot"></span>Posto Vista Alegre — painel ao vivo</span>
-      </div>
-
-      <div class="tank-row">
-        <div class="tank-label"><span>Gasolina Comum</span><b>68%</b></div>
-        <div class="tank-bar"><div class="tank-fill" style="width:68%; background:var(--amber);"></div></div>
-      </div>
-      <div class="tank-row">
-        <div class="tank-label"><span>Etanol</span><b>45%</b></div>
-        <div class="tank-bar"><div class="tank-fill" style="width:45%; background:var(--teal);"></div></div>
-      </div>
-      <div class="tank-row">
-        <div class="tank-label"><span>Diesel S10</span><b>82%</b></div>
-        <div class="tank-bar"><div class="tank-fill" style="width:82%; background:#8B8FF2;"></div></div>
-      </div>
-
-      <div class="dash-ticker">Última venda: <b id="tickerValue">R$ 187,40</b> · Bomba 3 · 42,3 L</div>
-      <div class="dash-loyalty">Hoje: <b id="loyaltyValue">1.482</b> pontos de fidelidade resgatados</div>
-    </div>
-  </div>
-</header>
-
-
-<main id="pilares">
-
-  <!-- GESTÃO -->
-  <section class="pillar pillar-gestao">
-    <div class="wrap pillar-grid">
+  <header class="hero">
+    <div class="wrap hero-grid">
       <div>
-        <h2>Gestão</h2>
-        <p class="desc">Controle o estoque e veja o desempenho do posto sem planilha paralela.</p>
-        <ul class="feature-list">
-          <li>Fechamento de caixa automático, turno a turno</li>
-          <li>Estoque de combustíveis atualizado em tempo real</li>
-          <li>Painel único para redes com múltiplos postos</li>
-          <li>Relatórios financeiros e fiscais prontos para a contabilidade</li>
-        </ul>
+        <h1>O posto inteiro, em um único painel.</h1>
+        <p class="lede">Monitoramento de tanques e um programa de fidelidade em uma única plataforma. Para quem opera o
+          posto e para quem abastece nele.</p>
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#cta">Solicitar demonstração</a>
+          <a class="btn-ghost" href="#pilares">Ver como funciona</a>
+        </div>
       </div>
-      <div class="diagram-box" aria-hidden="true">
-        <svg viewBox="0 0 320 260" fill="none">
-          <rect x="30" y="150" width="46" height="60" rx="3" stroke="#93A0A8" stroke-width="1.4" opacity="0.6"/>
-          <rect x="105" y="130" width="46" height="80" rx="3" stroke="#93A0A8" stroke-width="1.4" opacity="0.6"/>
-          <rect x="180" y="160" width="46" height="50" rx="3" stroke="#93A0A8" stroke-width="1.4" opacity="0.6"/>
-          <path d="M53 150 L160 80" stroke="#F2A93B" stroke-width="1.4"/>
-          <path d="M128 130 L160 80" stroke="#F2A93B" stroke-width="1.4"/>
-          <path d="M203 160 L160 80" stroke="#F2A93B" stroke-width="1.4"/>
-          <rect x="115" y="40" width="90" height="46" rx="4" fill="#F2A93B" opacity="0.14" stroke="#F2A93B" stroke-width="1.5"/>
-          <rect x="125" y="52" width="30" height="4" rx="2" fill="#F2A93B"/>
-          <rect x="125" y="60" width="50" height="4" rx="2" fill="#F2A93B" opacity="0.55"/>
-          <rect x="125" y="68" width="40" height="4" rx="2" fill="#F2A93B" opacity="0.3"/>
+      <app-carousel></app-carousel>
+    </div>
+  </header>
+
+
+  <main id="pilares">
+
+    <!-- GESTÃO -->
+    <section class="pillar pillar-gestao">
+      <div class="wrap pillar-grid">
+        <div>
+          <h2>Gestão</h2>
+          <p class="desc">Controle as bombas e veja o desempenho do posto sem planilha paralela.</p>
+        </div>
+      <div class="capture-image">
+        <img src="assets/print-bomba.png" alt="imagem da bomba de combustível">
+      </div>
+      </div>
+    </section>
+
+    <!-- MONITORAMENTO -->
+    <section class="pillar pillar-monitoramento reverse">
+      <div class="wrap pillar-grid">
+        <div>
+          <h2>Monitoramento</h2>
+          <p class="desc">Sensores nos tanques e nas bombas avisam antes que o problema apareça na conta.</p>
+          <ul class="feature-list">
+            <li>Telemetria de nível e temperatura dos tanques, 24 horas por dia</li>
+            <li>Alertas automáticos de variação suspeita — possível furto ou vazamento</li>
+            <li>Integração direta com bicos e sistemas fiscais (ECF)</li>
+            <li>Histórico completo de cada abastecimento</li>
+          </ul>
+        </div>
+        <div class="diagram-box" aria-hidden="true">
+          <svg viewBox="0 0 320 260" fill="none">
+            <rect x="90" y="40" width="140" height="180" rx="10" stroke="#93A0A8" stroke-width="1.4" opacity="0.6" />
+            <rect x="98" y="120" width="124" height="92" rx="6" fill="#3FB6A8" opacity="0.18" />
+            <line x1="90" y1="120" x2="230" y2="120" stroke="#3FB6A8" stroke-width="1.4" />
+            <circle cx="230" cy="70" r="5" fill="#3FB6A8" />
+            <path d="M235 70 C 260 70, 250 40, 275 40" stroke="#3FB6A8" stroke-width="1.4" fill="none" />
+            <polyline points="245,150 258,130 270,165 282,120 294,150" stroke="#3FB6A8" stroke-width="1.6" fill="none"
+              stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIDELIZAÇÃO -->
+    <section class="pillar pillar-fidelizacao">
+      <div class="wrap pillar-grid">
+        <div>
+          <h2>Fidelização</h2>
+          <p class="desc">Transforme cada abastecimento em motivo para o motorista voltar.</p>
+          <ul class="feature-list">
+            <li>Pontos por litro abastecido, resgatáveis no próprio posto</li>
+            <li>Cupons e cashback personalizados por perfil de consumo</li>
+            <li>Aplicativo do motorista com histórico, saldo e promoções</li>
+            <li>Campanhas por push e SMS disparadas direto da plataforma</li>
+          </ul>
+        </div>
+        <div class="diagram-box" aria-hidden="true">
+          <svg viewBox="0 0 320 260" fill="none">
+            <rect x="60" y="80" width="200" height="120" rx="12" fill="#E8735F" opacity="0.14" stroke="#E8735F"
+              stroke-width="1.5" />
+            <rect x="80" y="102" width="60" height="8" rx="4" fill="#E8735F" />
+            <rect x="80" y="118" width="100" height="6" rx="3" fill="#E8735F" opacity="0.5" />
+            <circle cx="220" cy="160" r="22" fill="none" stroke="#E8735F" stroke-width="1.6" />
+            <text x="220" y="165" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13"
+              fill="#E8735F">+5%</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <section class="flow">
+    <div class="wrap">
+      <div class="flow-head">
+        <h2>Como as três partes se conectam</h2>
+        <p>Cada abastecimento gera um dado. O Fluxo cruza esse dado com estoque, telemetria e histórico do motorista — e
+          devolve uma recompensa em segundos.</p>
+      </div>
+      <div class="flow-diagram">
+        <svg viewBox="0 0 900 220" fill="none">
+          <!-- Posto -->
+          <rect x="30" y="80" width="180" height="60" rx="6" stroke="#93A0A8" stroke-width="1.4" />
+          <text x="120" y="100" text-anchor="middle" fill="#ECEAE3" font-family="IBM Plex Sans" font-size="14"
+            font-weight="600">Posto</text>
+          <text x="120" y="120" text-anchor="middle" fill="#93A0A8" font-family="IBM Plex Sans"
+            font-size="11.5">registra a venda</text>
+
+          <!-- Fluxo -->
+          <rect x="360" y="70" width="180" height="80" rx="6" fill="#F2A93B" opacity="0.14" stroke="#F2A93B"
+            stroke-width="1.6" />
+          <text x="450" y="102" text-anchor="middle" fill="#F2A93B" font-family="IBM Plex Sans" font-size="14"
+            font-weight="600">Fluxo</text>
+          <text x="450" y="122" text-anchor="middle" fill="#93A0A8" font-family="IBM Plex Sans" font-size="11.5">cruza
+            dados e decide</text>
+
+          <!-- Motorista -->
+          <rect x="690" y="80" width="180" height="60" rx="6" stroke="#93A0A8" stroke-width="1.4" />
+          <text x="780" y="100" text-anchor="middle" fill="#ECEAE3" font-family="IBM Plex Sans" font-size="14"
+            font-weight="600">Motorista</text>
+          <text x="780" y="120" text-anchor="middle" fill="#93A0A8" font-family="IBM Plex Sans" font-size="11.5">recebe
+            a recompensa</text>
+
+          <path d="M210 110 L360 110" stroke="#F2A93B" stroke-width="1.6" marker-end="url(#arrow)" />
+          <path d="M540 110 L690 110" stroke="#F2A93B" stroke-width="1.6" marker-end="url(#arrow)" />
+          <path d="M780 140 C 780 195, 120 195, 120 140" stroke="#3FB6A8" stroke-width="1.4" fill="none"
+            marker-end="url(#arrowteal)" />
+          <text x="450" y="205" text-anchor="middle" fill="#3FB6A8" font-family="IBM Plex Mono, monospace"
+            font-size="11">retorno de fidelidade alimenta o próximo ciclo</text>
+
+          <defs>
+            <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#F2A93B" />
+            </marker>
+            <marker id="arrowteal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 Z" fill="#3FB6A8" />
+            </marker>
+          </defs>
         </svg>
       </div>
     </div>
   </section>
 
-  <!-- MONITORAMENTO -->
-  <section class="pillar pillar-monitoramento reverse">
-    <div class="wrap pillar-grid">
-      <div>
-        <h2>Monitoramento</h2>
-        <p class="desc">Sensores nos tanques e nas bombas avisam antes que o problema apareça na conta.</p>
-        <ul class="feature-list">
-          <li>Telemetria de nível e temperatura dos tanques, 24 horas por dia</li>
-          <li>Alertas automáticos de variação suspeita — possível furto ou vazamento</li>
-          <li>Integração direta com bicos e sistemas fiscais (ECF)</li>
-          <li>Histórico completo de cada abastecimento</li>
-        </ul>
-      </div>
-      <div class="diagram-box" aria-hidden="true">
-        <svg viewBox="0 0 320 260" fill="none">
-          <rect x="90" y="40" width="140" height="180" rx="10" stroke="#93A0A8" stroke-width="1.4" opacity="0.6"/>
-          <rect x="98" y="120" width="124" height="92" rx="6" fill="#3FB6A8" opacity="0.18"/>
-          <line x1="90" y1="120" x2="230" y2="120" stroke="#3FB6A8" stroke-width="1.4"/>
-          <circle cx="230" cy="70" r="5" fill="#3FB6A8"/>
-          <path d="M235 70 C 260 70, 250 40, 275 40" stroke="#3FB6A8" stroke-width="1.4" fill="none"/>
-          <polyline points="245,150 258,130 270,165 282,120 294,150" stroke="#3FB6A8" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+  <section class="cta-band" id="cta">
+    <div class="wrap">
+      <h2>Pronto para ver o Fluxo no seu posto?</h2>
+      <p>Agende uma demonstração com a nossa equipe e veja o painel funcionando com dados parecidos com os do seu posto.
+      </p>
+      <a class="btn-primary"
+        href="mailto:contato@fluxo.com.br?subject=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Fluxo">Solicitar
+        demonstração</a>
     </div>
   </section>
 
-  <!-- FIDELIZAÇÃO -->
-  <section class="pillar pillar-fidelizacao">
-    <div class="wrap pillar-grid">
-      <div>
-        <h2>Fidelização</h2>
-        <p class="desc">Transforme cada abastecimento em motivo para o motorista voltar.</p>
-        <ul class="feature-list">
-          <li>Pontos por litro abastecido, resgatáveis no próprio posto</li>
-          <li>Cupons e cashback personalizados por perfil de consumo</li>
-          <li>Aplicativo do motorista com histórico, saldo e promoções</li>
-          <li>Campanhas por push e SMS disparadas direto da plataforma</li>
-        </ul>
-      </div>
-      <div class="diagram-box" aria-hidden="true">
-        <svg viewBox="0 0 320 260" fill="none">
-          <rect x="60" y="80" width="200" height="120" rx="12" fill="#E8735F" opacity="0.14" stroke="#E8735F" stroke-width="1.5"/>
-          <rect x="80" y="102" width="60" height="8" rx="4" fill="#E8735F"/>
-          <rect x="80" y="118" width="100" height="6" rx="3" fill="#E8735F" opacity="0.5"/>
-          <circle cx="220" cy="160" r="22" fill="none" stroke="#E8735F" stroke-width="1.6"/>
-          <text x="220" y="165" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="13" fill="#E8735F">+5%</text>
-        </svg>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<section class="flow">
-  <div class="wrap">
-    <div class="flow-head">
-      <h2>Como as três partes se conectam</h2>
-      <p>Cada abastecimento gera um dado. O Fluxo cruza esse dado com estoque, telemetria e histórico do motorista — e devolve uma recompensa em segundos.</p>
-    </div>
-    <div class="flow-diagram">
-      <svg viewBox="0 0 900 220" fill="none">
-        <!-- Posto -->
-        <rect x="30" y="80" width="180" height="60" rx="6" stroke="#93A0A8" stroke-width="1.4"/>
-        <text x="120" y="100" text-anchor="middle" fill="#ECEAE3" font-family="IBM Plex Sans" font-size="14" font-weight="600">Posto</text>
-        <text x="120" y="120" text-anchor="middle" fill="#93A0A8" font-family="IBM Plex Sans" font-size="11.5">registra a venda</text>
-
-        <!-- Fluxo -->
-        <rect x="360" y="70" width="180" height="80" rx="6" fill="#F2A93B" opacity="0.14" stroke="#F2A93B" stroke-width="1.6"/>
-        <text x="450" y="102" text-anchor="middle" fill="#F2A93B" font-family="IBM Plex Sans" font-size="14" font-weight="600">Fluxo</text>
-        <text x="450" y="122" text-anchor="middle" fill="#93A0A8" font-family="IBM Plex Sans" font-size="11.5">cruza dados e decide</text>
-
-        <!-- Motorista -->
-        <rect x="690" y="80" width="180" height="60" rx="6" stroke="#93A0A8" stroke-width="1.4"/>
-        <text x="780" y="100" text-anchor="middle" fill="#ECEAE3" font-family="IBM Plex Sans" font-size="14" font-weight="600">Motorista</text>
-        <text x="780" y="120" text-anchor="middle" fill="#93A0A8" font-family="IBM Plex Sans" font-size="11.5">recebe a recompensa</text>
-
-        <path d="M210 110 L360 110" stroke="#F2A93B" stroke-width="1.6" marker-end="url(#arrow)"/>
-        <path d="M540 110 L690 110" stroke="#F2A93B" stroke-width="1.6" marker-end="url(#arrow)"/>
-        <path d="M780 140 C 780 195, 120 195, 120 140" stroke="#3FB6A8" stroke-width="1.4" fill="none" marker-end="url(#arrowteal)"/>
-        <text x="450" y="205" text-anchor="middle" fill="#3FB6A8" font-family="IBM Plex Mono, monospace" font-size="11">retorno de fidelidade alimenta o próximo ciclo</text>
-
-        <defs>
-          <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-            <path d="M0,0 L8,4 L0,8 Z" fill="#F2A93B"/>
-          </marker>
-          <marker id="arrowteal" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-            <path d="M0,0 L8,4 L0,8 Z" fill="#3FB6A8"/>
-          </marker>
-        </defs>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<section class="cta-band" id="cta">
-  <div class="wrap">
-    <h2>Pronto para ver o Fluxo no seu posto?</h2>
-    <p>Agende uma demonstração com a nossa equipe e veja o painel funcionando com dados parecidos com os do seu posto.</p>
-    <a class="btn-primary" href="mailto:contato@fluxo.com.br?subject=Quero%20uma%20demonstra%C3%A7%C3%A3o%20do%20Fluxo">Solicitar demonstração</a>
-  </div>
-</section>
-
-<footer class="wrap">
-  <span>© 2026 Fluxo — gestão de postos, do tanque ao cliente.</span>
-  <span>contato@fluxo.com.br</span>
-</footer>
+  <footer class="wrap">
+    <span>© 2026 Fluxo — gestão de postos, do tanque ao cliente.</span>
+    <span>contato@fluxo.com.br</span>
+  </footer>

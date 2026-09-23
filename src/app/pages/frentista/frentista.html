@@ -1,0 +1,144 @@
+<div class="painel">
+
+  <header class="painel-header">
+    <div>
+      <h1>Posto Central</h1>
+      <p class="subtitle">Painel de acompanhamento das bombas</p>
+    </div>
+    <div class="summary">
+      <div class="summary-item">
+        <span class="dot dot-livre"></span>
+        <span>{{ countLivre }} livres</span>
+      </div>
+      <div class="summary-item">
+        <span class="dot dot-ocupado"></span>
+        <span>{{ countOcupado }} em uso</span>
+      </div>
+      <div class="summary-item">
+        <span class="dot dot-manutencao"></span>
+        <span>{{ countManutencao }} em manutenção</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="grid">
+    <button
+      type="button"
+      class="pump-card"
+      [class.is-livre]="pump.status === 'livre'"
+      [class.is-ocupado]="pump.status === 'ocupado'"
+      [class.is-pausado]="pump.status === 'pausado'"
+      [class.is-manutencao]="pump.status === 'manutencao'"
+      *ngFor="let pump of pumps"
+      (click)="openPump(pump)"
+    >
+      <span class="pump-label">{{ pump.label }}</span>
+
+      <span class="pump-status">
+        <span class="dot"
+          [class.dot-livre]="pump.status === 'livre'"
+          [class.dot-ocupado]="pump.status === 'ocupado' || pump.status === 'pausado'"
+          [class.dot-manutencao]="pump.status === 'manutencao'"
+        ></span>
+        {{ statusLabel(pump.status) }}
+      </span>
+
+      <span class="pump-fuel" *ngIf="pump.fuelType">{{ pump.fuelType }}</span>
+    </button>
+  </section>
+
+</div>
+
+<!-- Painel de detalhes -->
+<div class="overlay" *ngIf="selectedPump" (click)="closePanel()">
+  <div class="detail-panel" (click)="$event.stopPropagation()">
+
+    <div class="detail-header">
+      <h2>{{ selectedPump.label }}</h2>
+      <button type="button" class="close-x" (click)="closePanel()" aria-label="Fechar">✕</button>
+    </div>
+
+    <!-- Bomba livre -->
+    <ng-container *ngIf="selectedPump.status === 'livre'">
+      <p class="empty-state">Bomba livre — aguardando veículo.</p>
+    </ng-container>
+
+    <!-- Bomba em manutenção -->
+    <ng-container *ngIf="selectedPump.status === 'manutencao'">
+      <p class="empty-state">Bomba em manutenção.</p>
+      <p class="maintenance-reason">{{ selectedPump.maintenanceReason }}</p>
+    </ng-container>
+
+    <!-- Bomba ocupada ou pausada -->
+    <ng-container *ngIf="selectedPump.status === 'ocupado' || selectedPump.status === 'pausado'">
+      <dl class="detail-grid">
+        <div class="detail-row">
+          <dt>Combustível</dt>
+          <dd>{{ selectedPump.fuelType }}</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Status</dt>
+          <dd>{{ selectedPump.status === 'pausado' ? 'Pausado' : 'Abastecendo' }}</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Bico utilizado</dt>
+          <dd>{{ selectedPump.nozzle }}</dd>
+        </div>
+      </dl>
+
+      <div class="detail-grid financial">
+        <div class="detail-row">
+          <dt>Volume</dt>
+          <dd>{{ formatVolume(selectedPump.volume) }}</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Valor parcial</dt>
+          <dd>{{ formatCurrency(partialValue(selectedPump)) }}</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Preço/Litro</dt>
+          <dd>{{ formatCurrency(selectedPump.pricePerLiter) }}</dd>
+        </div>
+      </div>
+
+      <dl class="detail-grid">
+        <div class="detail-row">
+          <dt>Início</dt>
+          <dd>{{ formatTime(selectedPump.startTime) }}</dd>
+        </div>
+        <div class="detail-row">
+          <dt>Tempo</dt>
+          <dd>{{ formatElapsed(selectedPump) }}</dd>
+        </div>
+      </dl>
+
+      <p class="attendant">Atendente: <b>{{ selectedPump.attendant }}</b></p>
+
+      <div class="occurrences" *ngIf="selectedPump.occurrences.length">
+        <p class="occurrences-title">Ocorrências</p>
+        <ul>
+          <li *ngFor="let occ of selectedPump.occurrences">
+            {{ formatTime(occ.time) }} — {{ occ.note }}
+          </li>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn-action" (click)="togglePause(selectedPump)">
+          {{ selectedPump.status === 'pausado' ? '▶ Retomar' : '⏸ Pausar' }}
+        </button>
+        <button type="button" class="btn-action btn-warning" (click)="registerOccurrence(selectedPump)">
+          ⚠ Ocorrência
+        </button>
+        <button type="button" class="btn-action btn-close" (click)="closePanel()">
+          Fechar
+        </button>
+      </div>
+    </ng-container>
+
+    <div class="actions" *ngIf="selectedPump.status === 'livre' || selectedPump.status === 'manutencao'">
+      <button type="button" class="btn-action btn-close" (click)="closePanel()">Fechar</button>
+    </div>
+
+  </div>
+</div>
