@@ -2,7 +2,7 @@
 
   <header class="painel-header">
     <div>
-      <h1>Posto Central</h1>
+      <h1>PostSync</h1>
       <p class="subtitle">Painel de acompanhamento das bombas</p>
     </div>
     <div class="summary">
@@ -19,6 +19,7 @@
         <span>{{ countManutencao }} em manutenção</span>
       </div>
     </div>
+    <button type="button" class="btn-logout" (click)="logout()">Sair</button>
   </header>
 
   <section class="grid">
@@ -45,6 +46,54 @@
 
       <span class="pump-fuel" *ngIf="pump.fuelType">{{ pump.fuelType }}</span>
     </button>
+  </section>
+
+  <!-- Ocupação do posto -->
+  <section class="control-card">
+    <h2>Ocupação do posto — agora</h2>
+
+    <ul class="occupancy-list">
+      <li>
+        <span class="dot dot-livre"></span>
+        <span class="occupancy-text">Livre</span>
+        <b>{{ countLivre }} bomba{{ countLivre === 1 ? '' : 's' }}</b>
+      </li>
+      <li>
+        <span class="dot dot-ocupado"></span>
+        <span class="occupancy-text">Ocupada</span>
+        <b>{{ countOcupado }} bomba{{ countOcupado === 1 ? '' : 's' }}</b>
+      </li>
+      <li>
+        <span class="dot dot-manutencao"></span>
+        <span class="occupancy-text">Manutenção</span>
+        <b>{{ countManutencao }} bomba{{ countManutencao === 1 ? '' : 's' }}</b>
+      </li>
+    </ul>
+
+    <div class="occupancy-rate">
+      <div class="rate-label">
+        <span>Taxa de ocupação</span>
+        <span>{{ occupancyRate }}%</span>
+      </div>
+      <div class="rate-bar">
+        <div class="rate-fill" [style.width.%]="occupancyRate"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Histórico de movimento -->
+  <section class="control-card">
+    <h2>Movimento das últimas 6 horas</h2>
+
+    <div class="movement-chart">
+      <div class="movement-row" *ngFor="let m of movementHistory">
+        <span class="movement-hour">{{ m.label }}</span>
+        <div class="movement-bar-track">
+          <div class="movement-bar-fill" [style.width.%]="movementBarWidth(m.count)"></div>
+        </div>
+        <span class="movement-count">{{ m.count }}</span>
+      </div>
+    </div>
   </section>
 
 </div>
@@ -122,6 +171,36 @@
           </li>
         </ul>
       </div>
+
+      <div class="cliente-desconto">
+
+  <label for="codigoCliente">Código do cliente</label>
+
+  <div class="cliente-input">
+    <input
+      type="text"
+      id="codigoCliente"
+      [(ngModel)]="codigoCliente"
+      placeholder="Digite o código do cliente"
+    >
+
+    <button
+      type="button"
+      class="btn-codigo"
+      (click)="inserirCodigoCliente()"
+    >
+      Inserir código
+    </button>
+  </div>
+
+  <div
+    class="mensagem-cliente"
+    *ngIf="mensagemCliente"
+  >
+    {{ mensagemCliente }}
+  </div>
+
+</div>
 
       <div class="actions">
         <button type="button" class="btn-action" (click)="togglePause(selectedPump)">

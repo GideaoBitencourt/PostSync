@@ -2,66 +2,100 @@
 
     <main class="login-container">
 
-        <!-- Lado esquerdo -->
-        <section class="login-banner">
-            <div class="banner-text">
-                <h1>post<span>Sync</span></h1>
-                <p>Sincronize sua operação em um só<br>lugar.</p>
-            </div>
-        </section>
+    <!-- Lado esquerdo -->
+    <section class="login-banner">
+        <div class="banner-text">
+            <h1>Post<span>Sync</span></h1>
+            <p>Sincronize sua operação em um só<br>lugar.</p>
+        </div>
+    </section>
 
-        <!-- Lado direito -->
-        <section class="login-form">
+    <!-- Lado direito -->
+    <section class="login-form">
 
-            <div class="form-content">
+        <div class="form-content">
 
-                <h2>Entrar</h2>
-                <p class="subtitle">Acesse sua conta postSync</p>
+            <h2>Entrar</h2>
+            <p class="subtitle">Acesse sua conta PostSync</p>
 
-                <form>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
 
-                    <div class="input-group">
-                        <label for="email">Email</label>
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="voce@empresa.com"
-                        >
-                    </div>
-
-                    <div class="input-group">
-                        <label for="senha">Senha</label>
-                        <input
-                            type="password"
-                            id="senha"
-                            placeholder="••••••••"
-                        >
-                    </div>
-
-                    <a href="#" class="forgot-password">
-                        Esqueceu sua senha?
-                    </a>
-
-                    <button type="submit" class="btn-entrar">
-                        Entrar
-                    </button>
-
-                </form>
-
-                <div class="divider">
-                    <span></span>
-                    <p>ou</p>
-                    <span></span>
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        formControlName="email"
+                        placeholder="voce@empresa.com"
+                        autocomplete="email"
+                        [class.invalid]="email?.invalid && email?.touched"
+                    >
+                    <span class="error" *ngIf="email?.invalid && email?.touched">
+                        <span *ngIf="email?.errors?.['required']">Informe seu email.</span>
+                        <span *ngIf="email?.errors?.['email']">Email inválido.</span>
+                    </span>
                 </div>
 
-                <button class="btn-cadastrar">
-                    <a href="cadastro">Cadastrar conta</a> 
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <div class="password-wrap">
+                        <input
+                            [type]="showPassword ? 'text' : 'password'"
+                            id="senha"
+                            formControlName="senha"
+                            placeholder="••••••••"
+                            autocomplete="current-password"
+                            [class.invalid]="senha?.invalid && senha?.touched"
+                        >
+                        <button
+                            type="button"
+                            class="eye-toggle"
+                            (click)="togglePasswordVisibility()"
+                            [attr.aria-label]="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                        >
+                            <svg *ngIf="!showPassword" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                            <svg *ngIf="showPassword" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                                <line x1="3" y1="21" x2="21" y2="3" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <span class="error" *ngIf="senha?.invalid && senha?.touched">
+                        <span *ngIf="senha?.errors?.['required']">Informe sua senha.</span>
+                        <span *ngIf="senha?.errors?.['minlength']">A senha precisa ter pelo menos 6 caracteres.</span>
+                    </span>
+                </div>
+
+                <a href="#" class="forgot-password">
+                    Esqueceu sua senha?
+                </a>
+
+                <p class="login-error" *ngIf="loginError">{{ loginError }}</p>
+
+                <button type="submit" class="btn-entrar" [disabled]="isSubmitting">
+                    {{ isSubmitting ? 'Entrando...' : 'Entrar' }}
                 </button>
 
+            </form>
+
+            <div class="divider">
+                <span></span>
+                <p>ou</p>
+                <span></span>
             </div>
 
-        </section>
+            <button type="button" class="btn-cadastrar" (click)="goToRegister()">
+                Cadastrar conta
+            </button>
 
-    </main>
+        </div>
+
+    </section>
+
+</main>
 
 </body>

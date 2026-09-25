@@ -4,7 +4,7 @@
   --brand: #E53E29;
   --white: #FFFFFF;
   --ink: #1A1A1A;
-  --ink-muted: #6B6B6B;
+  --ink-muted: #414040;
   --border: #E4E1DF;
   --bg: #F6F5F4;
 
@@ -34,7 +34,7 @@
 }
 
 .painel-header h1 {
-  margin: 0 0 4px;
+  margin: 0 0 15px;
   font-size: 1.7rem;
   font-weight: 700;
   color: var(--ink);
@@ -43,7 +43,7 @@
 
 .subtitle {
   margin: 0;
-  color: var(--ink-muted);
+  color: black;
   font-size: 0.95rem;
 }
 
@@ -63,6 +63,23 @@
   border: 1px solid var(--border);
   padding: 8px 14px;
   border-radius: 8px;
+}
+
+.btn-logout {
+  background: var(--white);
+  color: var(--brand);
+  border: 1.5px solid var(--brand);
+  padding: 9px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font-family: inherit;
+}
+ 
+.btn-logout:hover {
+  background: var(--brand);
+  color: var(--white);
 }
 
 .dot {
@@ -114,7 +131,7 @@
 .pump-card.is-manutencao { border-color: rgba(217, 164, 4, 0.4); background: rgba(217, 164, 4, 0.05); }
 
 .pump-label {
-  font-size: 0.82rem;
+  font-size: 22px;
   font-weight: 700;
   color: var(--ink-muted);
   letter-spacing: 0.02em;
@@ -133,6 +150,212 @@
   font-size: 0.85rem;
   color: var(--ink-muted);
 }
+
+/* ---------- OCUPAÇÃO / MOVIMENTO ---------- */
+.control-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  margin-top: 20px;
+}
+
+.control-card h2 {
+  margin: 0 0 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.occupancy-list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.occupancy-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  color: var(--ink-muted);
+}
+
+.occupancy-text {
+  min-width: 33px;
+}
+
+.occupancy-list li b {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.occupancy-rate {
+  max-width: 480px;
+}
+
+.rate-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
+
+.rate-label span:last-child {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rate-bar {
+  height: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.rate-fill {
+  height: 100%;
+  background: var(--ocupado);
+  border-radius: 6px;
+  transition: width 0.3s ease;
+}
+
+.movement-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movement-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 28px;
+  align-items: center;
+  gap: 12px;
+}
+
+.movement-hour {
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  font-weight: 600;
+}
+
+.movement-bar-track {
+  height: 10px;
+  background: var(--bg);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.movement-bar-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.movement-count {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+}
+
+/* ---------- CÓDIGO DO CLIENTE ---------- */
+
+.cliente-desconto {
+  margin: 20px 0;
+  padding: 16px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.cliente-desconto label {
+  display: block;
+  margin-bottom: 8px;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.cliente-input {
+  display: flex;
+  gap: 8px;
+}
+
+.cliente-input input {
+  flex: 1;
+
+  min-width: 0;
+  padding: 11px 12px;
+
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+
+  background: var(--white);
+  color: var(--ink);
+
+  font-family: inherit;
+  font-size: 0.9rem;
+
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.cliente-input input:focus {
+  border-color: var(--brand);
+}
+
+.cliente-input input::placeholder {
+  color: #999;
+}
+
+.btn-codigo {
+  padding: 11px 14px;
+
+  border: 1.5px solid var(--brand);
+  border-radius: 8px;
+
+  background: var(--brand);
+  color: var(--white);
+
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: background 0.2s ease;
+}
+
+.btn-codigo:hover {
+  background: #C7301E;
+  border-color: #C7301E;
+}
+
+.mensagem-cliente {
+  margin-top: 12px;
+  padding: 10px 12px;
+
+  border-radius: 7px;
+
+  background: rgba(46, 158, 91, 0.10);
+  border: 1px solid rgba(46, 158, 91, 0.25);
+
+  color: var(--livre);
+
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 
 /* ---------- OVERLAY / MODAL ---------- */
 .overlay {
@@ -184,11 +407,13 @@
 .close-x:hover { color: var(--ink); }
 
 .empty-state {
+  margin-bottom: 20px;
   color: var(--ink-muted);
   font-size: 0.98rem;
 }
 
 .maintenance-reason {
+  margin-bottom: 20px;
   color: var(--manutencao);
   font-size: 0.9rem;
   margin-top: -8px;

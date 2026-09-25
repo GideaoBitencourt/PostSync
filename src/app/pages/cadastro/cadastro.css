@@ -23,7 +23,7 @@ body {
     background-color: #ed3827;
 
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .banner-text {
@@ -36,7 +36,7 @@ body {
 .banner-text h1 {
     margin: 0 0 8px;
 
-    font-size: 36px;
+    font-size: 100px;
     font-weight: 700;
 
     letter-spacing: -1px;
@@ -49,7 +49,7 @@ body {
 .banner-text p {
     margin: 0;
 
-    font-size: 18px;
+    font-size: 25px;
     line-height: 1.15;
 }
 
@@ -86,9 +86,9 @@ body {
 }
 
 .subtitle {
-    margin: 4px 0 36px;
+    margin: 10px 0 20px;
 
-    color: #777777;
+    color: #615f5f;
 
     font-size: 16px;
 }
@@ -141,6 +141,74 @@ body {
     border-color: #ed3827;
 }
 
+/* ---------- CAMPOS DE SENHA COM OLHO ---------- */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  padding-right: 44px;
+}
+
+.eye-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+  color: #6B6B6B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.eye-toggle:hover {
+  color: #1A1A1A;
+}
+
+.eye-toggle svg {
+  width: 20px;
+  height: 20px;
+}
+
+.eye-toggle:focus-visible {
+  outline: 2px solid #E53E29;
+  outline-offset: 2px;
+}
+
+/* ---------- ESTADO DE ERRO NOS CAMPOS ---------- */
+.input-group input.invalid {
+  border-color: #E53E29;
+}
+
+.error {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #E53E29;
+}
+
+/* ---------- MENSAGEM DE ERRO DO CADASTRO ---------- */
+.cadastro-error {
+  background: rgba(229, 62, 41, 0.08);
+  border: 1px solid rgba(229, 62, 41, 0.3);
+  color: #E53E29;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin: -6px 0 16px;
+}
+
+/* ---------- BOTÃO CADASTRAR DESABILITADO ---------- */
+.btn-cadastrar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 /* =========================
    BOTÃO CADASTRAR

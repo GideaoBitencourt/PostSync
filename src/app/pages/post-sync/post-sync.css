@@ -232,36 +232,6 @@ nav {
 }
 
 
-/* Lista de recursos 
-
-.feature-list {
-    padding: 0;
-    margin: 0;
-
-    list-style: none;
-}
-
-.feature-list li {
-    position: relative;
-
-    padding: 12px 0 12px 28px;
-
-    color: #000000;
-
-    border-bottom: 1px solid rgba(147, 160, 168, 0.1);
-}
-
-
-.feature-list li::before {
-    content: "→";
-
-    position: absolute;
-    left: 0;
-
-    color: var(--amber);
-
-    font-weight: bold;
-}*/
 
 .pillar-monitoramento .feature-list li::before {
     color: var(--teal);
@@ -271,33 +241,192 @@ nav {
     color: var(--red);
 }
 
-/* Diagramas */
-
-
-.diagram-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 300px;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 255, 255, 0.03),
-            transparent 60%
-        );
-
-    border: 1px solid var(--border);
-    border-radius: 10px;
+.print-rewards-image img {
+    border: 2px solid #f8f5f5;
 }
 
-.diagram-box svg {
+/* SEÇÃO DE PLANOS */
+
+.planos {
     width: 100%;
-    max-width: 400px;
-    height: auto;
+    padding: 80px 20px;
+    background: #f8fafc;
+    box-sizing: border-box;
 }
 
+.planos-container {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 25px;
+}
+
+/* CARD */
+
+.plano-card {
+    position: relative;
+
+    width: 100%;
+    max-width: 330px;
+    padding: 35px 30px;
+
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plano-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.10);
+}
+
+/* NOME DO PLANO */
+
+.plano-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 26px;
+    font-weight: 700;
+
+    color: #E63726;
+}
+
+/* DESCRIÇÃO */
+
+.plano-descricao {
+    margin: 0 0 30px;
+
+    font-size: 14px;
+    color: #111213;
+}
+
+/* PREÇO */
+
+.preco {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+
+    margin-bottom: 15px;
+
+    color: #E63726;
+}
+
+.preco span {
+    font-size: 18px;
+    font-weight: 600;
+
+    margin-right: 3px;
+}
+
+.preco strong {
+    font-size: 52px;
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+.preco small {
+    font-size: 15px;
+    color: #21262d;
+
+    margin-left: 4px;
+}
+
+/* QUANTIDADE DE POSTOS */
+
+.postos {
+    margin: 0 0 30px;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #334155;
+}
+
+/* BOTÃO */
+
+.plano-btn {
+    width: 100%;
+    padding: 13px 20px;
+
+    border: 2px solid #E63726;
+    border-radius: 8px;
+
+    background: transparent;
+    color: #E63726;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.plano-btn:hover {
+    background: #E63726;
+    color: #ffffff;
+}
+
+/* PLANO MAIS POPULAR */
+
+.plano-popular {
+    border: 2px solid #E63726;
+
+    transform: translateY(-12px);
+
+    box-shadow: 0 15px 35px #E63726;
+}
+
+.plano-popular:hover {
+    transform: translateY(-18px);
+}
+
+/* BADGE */
+
+.badge {
+    position: absolute;
+
+    top: -14px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    padding: 7px 20px;
+
+    background: #E63726;
+    color: #ffffff;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* BOTÃO DO PLANO POPULAR */
+
+.plano-popular .plano-btn {
+    background: #E63726;
+    color: #ffffff;
+}
+
+.plano-popular .plano-btn:hover {
+    background: #e84738;
+    border-color: #e84738;
+}
 
 /* Fluxo */
 
@@ -370,23 +499,21 @@ nav {
 
     color: var(--text-muted);
 
-    font-size: 17px;
+    font-size: 21px;
 }
 
 /* Footer */
 
 footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
     padding-top: 30px;
     padding-bottom: 30px;
-
-    color: #68747c;
-
+    color: #3d454a;
     font-size: 13px;
+    justify-content: space-around;
 }
+
 
 
 @media (max-width: 900px) {
@@ -478,5 +605,26 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
+    }
+}
+
+
+@media (max-width: 850px) {
+
+    .planos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .plano-card {
+        max-width: 400px;
+    }
+
+    .plano-popular {
+        transform: none;
+    }
+
+    .plano-popular:hover {
+        transform: translateY(-8px);
     }
 }

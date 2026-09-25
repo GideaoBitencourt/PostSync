@@ -2,125 +2,197 @@
 
     <main class="cadastro-container">
 
-        <!-- Lado esquerdo -->
-        <section class="cadastro-banner">
+    <!-- Lado esquerdo -->
+    <section class="cadastro-banner">
 
-            <div class="banner-text">
+        <div class="banner-text">
 
-                <h1>post<span>Sync</span></h1>
+            <h1>Post<span>Sync</span></h1>
 
-                <p>
-                    Sincronize sua operação em um só<br>
-                    lugar.
-                </p>
+            <p>
+                Sincronize sua operação em um só<br>
+                lugar.
+            </p>
 
-            </div>
+        </div>
 
-        </section>
-
-
-        <!-- Lado direito -->
-        <section class="cadastro-form">
-
-            <div class="form-content">
-
-                <h2>Cadastrar</h2>
-
-                <p class="subtitle">
-                    Crie sua conta postSync
-                </p>
+    </section>
 
 
-                <form>
+    <!-- Lado direito -->
+    <section class="cadastro-form">
 
-                    <!-- Nome -->
-                    <div class="input-group">
+        <div class="form-content">
 
-                        <label for="nome">
-                            Nome completo
-                        </label>
+            <h2>Cadastrar</h2>
 
-                        <input
-                            type="text"
-                            id="nome"
-                            placeholder="Digite seu nome completo"
-                        >
-
-                    </div>
+            <p class="subtitle">
+                Crie sua conta PostSync
+            </p>
 
 
-                    <!-- Email -->
-                    <div class="input-group">
+            <form [formGroup]="cadastroForm" (ngSubmit)="onSubmit()" novalidate>
 
-                        <label for="email">
-                            Email
-                        </label>
+                <!-- Nome -->
+                <div class="input-group">
 
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="voce@empresa.com"
-                        >
+                    <label for="nome">
+                        Nome completo
+                    </label>
 
-                    </div>
-
-
-                    <!-- Senha -->
-                    <div class="input-group">
-
-                        <label for="senha">
-                            Senha
-                        </label>
-
-                        <input
-                            type="password"
-                            id="senha"
-                            placeholder="Digite sua senha"
-                        >
-
-                    </div>
-
-
-                    <!-- Confirmar senha -->
-                    <div class="input-group">
-
-                        <label for="confirmar-senha">
-                            Confirmar senha
-                        </label>
-
-                        <input
-                            type="password"
-                            id="confirmar-senha"
-                            placeholder="Confirme sua senha"
-                        >
-
-                    </div>
-
-
-                    <!-- Botão -->
-                    <button
-                        type="submit"
-                        class="btn-cadastrar"
+                    <input
+                        type="text"
+                        id="nome"
+                        formControlName="nome"
+                        placeholder="Digite seu nome completo"
+                        autocomplete="name"
+                        [class.invalid]="nome?.invalid && nome?.touched"
                     >
-                        Cadastrar
-                    </button>
 
-                </form>
+                    <span class="error" *ngIf="nome?.invalid && nome?.touched">
+                        <span *ngIf="nome?.errors?.['required']">Informe seu nome completo.</span>
+                        <span *ngIf="nome?.errors?.['minlength']">O nome precisa ter pelo menos 3 caracteres.</span>
+                    </span>
+
+                </div>
 
 
-                <!-- Login -->
-                <p class="login-link">
-                    Já possui uma conta?
+                <!-- Email -->
+                <div class="input-group">
 
-                    <a href="http://localhost:4200/#">
-                        Entrar
-                    </a>
-                </p>
+                    <label for="email">
+                        Email
+                    </label>
 
-            </div>
+                    <input
+                        type="email"
+                        id="email"
+                        formControlName="email"
+                        placeholder="voce@empresa.com"
+                        autocomplete="email"
+                        [class.invalid]="email?.invalid && email?.touched"
+                    >
 
-        </section>
+                    <span class="error" *ngIf="email?.invalid && email?.touched">
+                        <span *ngIf="email?.errors?.['required']">Informe seu email.</span>
+                        <span *ngIf="email?.errors?.['email']">Email inválido.</span>
+                    </span>
 
-    </main>
+                </div>
+
+
+                <!-- Senha -->
+                <div class="input-group">
+
+                    <label for="senha">
+                        Senha
+                    </label>
+
+                    <div class="password-wrap">
+                        <input
+                            [type]="showPassword ? 'text' : 'password'"
+                            id="senha"
+                            formControlName="senha"
+                            placeholder="Digite sua senha"
+                            autocomplete="new-password"
+                            [class.invalid]="senha?.invalid && senha?.touched"
+                        >
+                        <button
+                            type="button"
+                            class="eye-toggle"
+                            (click)="togglePasswordVisibility()"
+                            [attr.aria-label]="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                        >
+                            <svg *ngIf="!showPassword" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                            <svg *ngIf="showPassword" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                                <line x1="3" y1="21" x2="21" y2="3" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <span class="error" *ngIf="senha?.invalid && senha?.touched">
+                        <span *ngIf="senha?.errors?.['required']">Informe uma senha.</span>
+                        <span *ngIf="senha?.errors?.['minlength']">A senha precisa ter pelo menos 6 caracteres.</span>
+                    </span>
+
+                </div>
+
+
+                <!-- Confirmar senha -->
+                <div class="input-group">
+
+                    <label for="confirmar-senha">
+                        Confirmar senha
+                    </label>
+
+                    <div class="password-wrap">
+                        <input
+                            [type]="showConfirmPassword ? 'text' : 'password'"
+                            id="confirmar-senha"
+                            formControlName="confirmarSenha"
+                            placeholder="Confirme sua senha"
+                            autocomplete="new-password"
+                            [class.invalid]="(confirmarSenha?.invalid && confirmarSenha?.touched) || senhasDiferentes"
+                        >
+                        <button
+                            type="button"
+                            class="eye-toggle"
+                            (click)="toggleConfirmPasswordVisibility()"
+                            [attr.aria-label]="showConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'"
+                        >
+                            <svg *ngIf="!showConfirmPassword" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                            <svg *ngIf="showConfirmPassword" viewBox="0 0 24 24" fill="none">
+                                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                                <line x1="3" y1="21" x2="21" y2="3" stroke="currentColor" stroke-width="1.6"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <span class="error" *ngIf="confirmarSenha?.invalid && confirmarSenha?.touched">
+                        Confirme sua senha.
+                    </span>
+                    <span class="error" *ngIf="senhasDiferentes && confirmarSenha?.valid">
+                        As senhas não conferem.
+                    </span>
+
+                </div>
+
+                <p class="cadastro-error" *ngIf="cadastroError">{{ cadastroError }}</p>
+
+                <!-- Botão -->
+                <button
+                    type="submit"
+                    class="btn-cadastrar"
+                    [disabled]="isSubmitting"
+                >
+                    {{ isSubmitting ? 'Criando conta...' : 'Cadastrar' }}
+                </button>
+
+            </form>
+
+
+            <!-- Login -->
+            <p class="login-link">
+                Já possui uma conta?
+
+                <a href="#" (click)="goToLogin(); $event.preventDefault()">
+                    Entrar
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
 
 </body>

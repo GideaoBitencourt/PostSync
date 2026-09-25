@@ -1,0 +1,98 @@
+<div class="login-screen">
+
+  <!-- Painel de marca -->
+  <aside class="brand-panel">
+    <div class="brand-content">
+      <div class="brand-mark">post<span>Sync</span></div>
+      <p class="brand-tagline">Sincronize sua operação em um só lugar.</p>
+    </div>
+    <svg class="brand-graphic" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+      <circle cx="330" cy="70" r="140" stroke="#FFFFFF" stroke-opacity="0.18" stroke-width="1.4"/>
+      <circle cx="330" cy="70" r="90" stroke="#FFFFFF" stroke-opacity="0.28" stroke-width="1.4"/>
+      <line x1="60" y1="330" x2="220" y2="170" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="1.4"/>
+      <circle cx="60" cy="330" r="5" fill="#FFFFFF"/>
+      <circle cx="220" cy="170" r="5" fill="#FFFFFF"/>
+    </svg>
+  </aside>
+
+  <!-- Painel do formulário -->
+  <main class="form-panel">
+    <div class="form-wrap">
+      <div class="form-header">
+        <h1>Entrar</h1>
+        <p>Acesse sua conta postSync</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="voce@empresa.com"
+            autocomplete="email"
+            [class.invalid]="email?.invalid && email?.touched"
+          />
+          <span class="error" *ngIf="email?.invalid && email?.touched">
+            <span *ngIf="email?.errors?.['required']">Informe seu email.</span>
+            <span *ngIf="email?.errors?.['email']">Email inválido.</span>
+          </span>
+        </div>
+
+        <div class="field">
+          <label for="senha">Senha</label>
+          <div class="password-wrap">
+            <input
+              id="senha"
+              [type]="showPassword ? 'text' : 'password'"
+              formControlName="senha"
+              placeholder="••••••••"
+              autocomplete="current-password"
+              [class.invalid]="senha?.invalid && senha?.touched"
+            />
+            <button
+              type="button"
+              class="eye-toggle"
+              (click)="togglePasswordVisibility()"
+              [attr.aria-label]="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+            >
+              <svg *ngIf="!showPassword" viewBox="0 0 24 24" fill="none">
+                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+              <svg *ngIf="showPassword" viewBox="0 0 24 24" fill="none">
+                <path d="M1 12C1 12 5 5 12 5C19 5 23 12 23 12C23 12 19 19 12 19C5 19 1 12 1 12Z" stroke="currentColor" stroke-width="1.6"/>
+                <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.6"/>
+                <line x1="3" y1="21" x2="21" y2="3" stroke="currentColor" stroke-width="1.6"/>
+              </svg>
+            </button>
+          </div>
+          <span class="error" *ngIf="senha?.invalid && senha?.touched">
+            <span *ngIf="senha?.errors?.['required']">Informe sua senha.</span>
+            <span *ngIf="senha?.errors?.['minlength']">A senha precisa ter pelo menos 6 caracteres.</span>
+          </span>
+        </div>
+
+        <div class="forgot-row">
+          <a href="#" class="forgot-link">Esqueceu sua senha?</a>
+        </div>
+
+        <p class="login-error" *ngIf="loginError">{{ loginError }}</p>
+
+        <button type="submit" class="btn-primary" [disabled]="isSubmitting">
+          {{ isSubmitting ? 'Entrando...' : 'Entrar' }}
+        </button>
+
+        <div class="divider"><span>ou</span></div>
+
+        <button type="button" class="btn-secondary" (click)="goToRegister()">
+          Cadastrar conta
+        </button>
+
+      </form>
+    </div>
+  </main>
+
+</div>
